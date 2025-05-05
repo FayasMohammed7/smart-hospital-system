@@ -1,0 +1,4 @@
+flask
+pymongo
+twilio
+python-dotenv

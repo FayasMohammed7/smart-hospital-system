@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Appointment</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #f9f9f9; }
+        form { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; margin: auto; }
+        input, select { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background: #28a745; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+    <h2 style="padding-bottom: 35px;">Book An Appointment</h2>
+    <form method="POST" action="/submit">
+        <label>Doctor:</label>
+        <select name="doctor" required>
+            <option value="Dr. Smith">Dr. Smith</option>
+            <option value="Dr. Johnson">Dr. Johnson</option>
+            <option value="Dr. Alex">Dr. Alex</option>
+            <option value="Dr. Faris">Dr. Faris</option>
+        </select>
+        <label>Phone Number:</label>
+        <input type="text" name="phone" value="+917902462522" required>
+        <label>Name:</label>
+        <input type="text" name="name" value="Fayas Mohammed N" required>
+        <label>Date:</label>
+        <input type="date" name="date" required>
+        <button type="submit">Book Now</button>
+    </form>
+</body>
+</html>

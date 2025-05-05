@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointments</title>
+    <style>
+        body { font-family: Arial; padding: 40px; background: #f9f9f9; }
+        table { width: 80%; margin: auto; border-collapse: collapse; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #4CAF50; color: white; }
+        h2 { text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Saved Appointments</h2>
+    <table>
+        <tr>
+            <th>Doctor</th>
+            <th>Phone</th>
+            <th>Name</th>
+            <th>Date</th>
+        </tr>
+        {% for a in appointments %}
+        <tr>
+            <td>{{ a.doctor }}</td>
+            <td>{{ a.phone }}</td>
+            <td>{{ a.name }}</td>
+            <td>{{ a.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
