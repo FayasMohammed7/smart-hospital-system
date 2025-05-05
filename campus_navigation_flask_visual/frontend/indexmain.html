@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hospital Navigation System</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color:#9ACBD0;}
+    select, button { padding: 8px; margin: 10px 0; }
+    svg { border: 1px solid #ccc; margin-top: 20px; background: #f7f7f7; }
+    text.distance { font-size: 12px; fill: #555; }
+
+
+    .background-container {
+      position: relative;
+      width: 100%;
+      height: 470px;
+      color: rgb(35, 147, 199);
+      text-align: center;
+      font-size: 24px;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .background-container::before {
+      content: "";
+      background-image: url(/frontend/northwestern-medicine-advanced-treatments-january-top-story.png);
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.2; /* Adjust opacity here color: darkslategray; */
+      z-index: 0;
+    }
+
+    .background-container > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .navbar-brand
+    {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color:#ffff;
+      font-size: 44px;
+      margin: 0px;
+    }
+
+    .special-link:hover {
+    background-color: cadetblue;
+    font-size: 18px;
+    }
+
+    .about__text {
+    color: darkslategray;
+    width: 760px;
+    max-width: 100%;
+    margin: auto;
+    line-height: 30px;
+    }
+
+    .ab:hover{
+      background-color: cadetblue;
+    }
+
+    .abc:hover{
+      background-color: cadetblue;
+      font-size: 18px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .left-text {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .right-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .right-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .f1{
+    width: 100%;
+    height: 100px;
+    background-color: rgb(87, 158, 158);
+    }
+
+    html {
+  scroll-behavior: smooth;
+  }
+
+
+  </style>
+</head>
+<body>
+
+  <!--navbar-->
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light navbar-text" style="background-color: #e8f1f3;">
+    <a class="navbar-brand" style="padding-left: 35px; " href="#">
+      <img src="/frontend/Hospital.png" width="110" height="110" class="d-inline-block align-top" alt="">
+      <span style="margin-top: 10px; padding-left: 35px;">Carson Tahoe HOSPITAL</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav" style="font-size: 20px;">
+        <a class="nav-item nav-link active special-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link special-link" href="#navigation">Navigation</a>
+        <a class="nav-item nav-link special-link" href="#">Book an Appointment</a>
+      </div>
+    </div>
+  </nav>
+
+  <video width="1480" height="900" playsinline autoplay muted loop><source src="/frontend/slider-2022-06.mp4" type="video/mp4"></video>
+
+  <!--About padding: 20px;
+    font-size: 38px;
+    font-weight: bold;
+    color: black; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center;
+-->
+  
+  <div class="background-container" style="padding-top: 20px;">
+    <h1 style="    box-sizing:border-box;
+      color:#123458;
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      font-weight: 500;
+      height: 64px;
+      line-height: 34px;
+      margin-block-end: 34px;
+      margin-block-start :0px;
+      margin-inline-end :0px;
+      margin-inline-start :0px;
+      margin-left: 0px;
+      margin-right :0px;
+      margin-top: 0px;
+      padding-bottom: 30px;
+      margin-top: 25px;
+      margin-bottom: 0px;
+      position :relative;
+      text-align: center;
+      text-size-adjust: 100%;
+      font-size: 2.25rem;">Carson Tahoe, Your Healthcare System</h1>
+    <hr style="display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    width:10%;
+    color:#FFFF00;
+    height:2px;
+    background-color: #123458;
+    border-radius: 100px;
+    margin-bottom: 35px;
+    ">
+    <p  id="navigation" class="about__text" style="text-align: center; font-family: Arial, Liberation Sans, DejaVu Sans, sans-serif; font-size: 16px;">Carson Tahoe Health, the region’s healthcare provider of choice, is a not-for-profit locally owned healthcare<br>
+      system. An affiliate of University of Utah Health, Carson Tahoe is dedicated to providing convenient access <br>
+      to advanced quality care in a tranquil, healing environment. From newborns to seniors, we care for patients<br>
+      of all ages and life stages. Our commitment to excellence makes us who we are and ensures our<br>
+      community is a healthy place to live, work, and thrive.</p>
+    <button style="text-align: center; align-items: center; margin-top: 50px; box-sizing: border-box; border-radius: 10px;" class="ab">About Us</button>
+  </div>
+
+
+  <div style="text-align: center; padding-top: 54px; background-color: #9ACBD0;">
+    <h2 style="font-size: 31px; font-weight: bold;">Hospital Navigation System</h2>
+  
+    <label for="start" style="margin-top: 20px;">Select Starting Point:</label><br />
+    <select id="start"></select><br /><br />
+  
+    <label for="end">Select Destination:</label><br />
+    <select id="end"></select><br /><br />
+  
+    <button onclick="findPath()" style="border-radius: 10px;" class="abc">Find Path</button>
+    <p style="margin-top: 30px; font-size: 20px;" id="result"></p>
+  </div>
+  <div style="display: flex; justify-content: center; background-color: #9ACBD0;">
+    <svg style="border: 1px solid gray;" width="680" height="400" id="map"></svg>
+  </div>
+
+  <div style="padding-top: 30px; background-color: #9ACBD0;">
+    <h1 style="    box-sizing:border-box;
+      color:#123458;
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      font-weight: 500;
+      height: 64px;
+      line-height: 34px;
+      margin-block-end: 34px;
+      margin-block-start :0px;
+      margin-inline-end :0px;
+      margin-inline-start :0px;
+      margin-left: 0px;
+      margin-right :0px;
+      margin-top: 0px;
+      padding-bottom: 30px;
+      margin-top: 35px;
+      margin-bottom: 0px;
+      position :relative;
+      text-align: center;
+      text-size-adjust: 100%;
+      font-size: 2.25rem;">Carson Tahoe, Your Healthcare System</h1>
+    <hr style="display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    width:10%;
+    color:#FFFF00;
+    height:2px;
+    background-color: #123458;
+    border-radius: 100px;
+    margin-bottom: 35px;
+    ">
+    <div class="container">
+    <div class="left-text">
+    <p class="about__text" style="font-family: open_sansitalic;
+    font-size: 18px;
+    line-height: 30px;">“From the pleasant young lady at reception, to the wonderful smiling ladies of the admissions desk, to the genuine, caring, and professional nurses, techs, Doctors, and aides, my experience was absolutely without equal. Throughout my business career, I have served as CEO of my own companies and worked closely with some major medical institutions, in particular, Mt. Sinai Medical Center in Florida. The level of compassion, excellence, and professionalism I have experienced at Carson Tahoe, puts them all to shame. ..”
+    <h3 style="margin-top: 25px;">John R.</h3>
+    </p>
+    </div>
+    <div class="right-image">
+      <img src="/frontend/testimonial_img.png" alt="">
+    </div>
+    </div>
+  </div>
+
+  <div class="f1">
+    <br>
+    <br>
+    <p style="color: darkslategray; text-align: center;">Copyright © Carson Tahoe Hospital Assistant | All Rights Reserved</p>
+  </div>
+
+  <script>
+    const locations = {
+      "Entrance 🚪": { x: 100, y: 100 },
+      "Reception 🛎️": { x: 250, y: 100 },
+      "OPD 🩺": { x: 400, y: 100 },
+      "ICU 🧠": { x: 550, y: 100 },
+      "Pharmacy 💊": { x: 400, y: 250 },
+      "Lab 🧪": { x: 250, y: 250 },
+      "Cafeteria ☕": { x: 100, y: 250 },
+      "Wards 🛏️": { x: 550, y: 250 }
+    };
+
+    const graph = {
+      "Entrance 🚪": ["Reception 🛎️", "Cafeteria ☕"],
+      "Reception 🛎️": ["Entrance 🚪", "OPD 🩺", "Lab 🧪"],
+      "OPD 🩺": ["Reception 🛎️", "ICU 🧠", "Pharmacy 💊"],
+      "ICU 🧠": ["OPD 🩺", "Wards 🛏️"],
+      "Pharmacy 💊": ["OPD 🩺", "Wards 🛏️"],
+      "Lab 🧪": ["Reception 🛎️", "Cafeteria ☕"],
+      "Cafeteria ☕": ["Entrance 🚪", "Lab 🧪"],
+      "Wards 🛏️": ["ICU 🧠", "Pharmacy 💊"]
+    };
+
+    const distances = {
+      "Entrance 🚪-Reception 🛎️": 10,
+      "Entrance 🚪-Cafeteria ☕": 8,
+      "Reception 🛎️-OPD 🩺": 12,
+      "Reception 🛎️-Lab 🧪": 10,
+      "OPD 🩺-ICU 🧠": 6,
+      "OPD 🩺-Pharmacy 💊": 8,
+      "ICU 🧠-Wards 🛏️": 7,
+      "Pharmacy 💊-Wards 🛏️": 5,
+      "Lab 🧪-Cafeteria ☕": 6
+    };
+
+    // Populate select elements
+    for (let loc in locations) {
+      document.getElementById("start").innerHTML += `<option value="${loc}">${loc}</option>`;
+      document.getElementById("end").innerHTML += `<option value="${loc}">${loc}</option>`;
+    }
+
+    function findPath() {
+      const start = document.getElementById("start").value;
+      const end = document.getElementById("end").value;
+
+      fetch("http://localhost:5000/api/path", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ start, end })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("result").textContent =
+          `Path: ${data.path.join(" → ")} |
+           Total Distance: ${data.cost} meter`;
+        drawGraph(data.path);
+        animateAlongPath(data.path);
+      });
+    }
+
+    function animateAlongPath(path) {
+        const svg = document.getElementById("map");
+        const locationsArray = path.map(name => locations[name]);
+
+  
+        const man = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        man.setAttribute("id", "walkingIcon");
+        man.setAttribute("font-size", "20");
+        man.setAttribute("text-anchor", "middle");
+        man.setAttribute("alignment-baseline", "middle");
+        man.textContent = "🚶"; // Walking emoji (you can replace this with a custom SVG too)
+        svg.appendChild(man);
+
+        let segment = 0;
+        let startTime = null;
+        const duration = 1000; // ms per segment
+
+        function move(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = (timestamp - startTime) / duration;
+
+            if (segment >= locationsArray.length - 1) {
+            // Restart the animation from the beginning
+            segment = 0;
+            startTime = null;
+            requestAnimationFrame(move);
+            return;
+        }
+
+        const start = locationsArray[segment];
+        const end = locationsArray[segment + 1];
+
+        const x = start.x + (end.x - start.x) * progress;
+        const y = start.y + (end.y - start.y) * progress;
+        man.setAttribute("x", x);
+        man.setAttribute("y", y);
+
+        if (progress < 1) {
+            requestAnimationFrame(move);
+        } else {
+          segment++;
+          startTime = null;
+          requestAnimationFrame(move);
+        }
+    }
+    requestAnimationFrame(move);
+  
+    }
+
+
+    function drawGraph(path = []) {
+      const svg = document.getElementById("map");
+      svg.innerHTML = "";
+
+      for (let from in graph) {
+        for (let to of graph[from]) {
+          const key = `${from}-${to}`;
+          const revKey = `${to}-${from}`;
+          const f = locations[from], t = locations[to];
+          const distance = distances[key] || distances[revKey] || 0;
+
+          svg.innerHTML += `
+            <line x1="${f.x}" y1="${f.y}" x2="${t.x}" y2="${t.y}"
+                  stroke="${path.includes(from) && path.includes(to) ? 'red' : '#888'}"
+                  stroke-width="2" />
+            <text x="${(f.x + t.x) / 2}" y="${(f.y + t.y) / 2 - 5}"
+                  class="distance">${distance}m</text>
+          `;
+        }
+      }
+
+      for (let loc in locations) {
+        const { x, y } = locations[loc];
+        const isPath = path.includes(loc);
+        svg.innerHTML += `
+          <circle cx="${x}" cy="${y}" r="15"
+    fill="${isPath ? '#FF7F50' : '#4A90E2'}"
+    stroke="#2C3E50"
+    stroke-width="2" />
+  <text x="${x}" y="${y + 30}"
+    font-size="14" fill="#2D3436"
+    text-anchor="middle"
+    font-weight="bold">${loc}</text>
+        `;
+      }
+    }
+
+    window.onload = () => drawGraph();
+  </script>
+  
+</body>
+</html>
